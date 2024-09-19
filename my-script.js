@@ -50,19 +50,37 @@ function playRound(humanChoice, computerChoice){
     } else {
         computerScore++;
         return `You lose! ${computerChoice} beats ${humanChoice}`;
-    }
+    }  
 }
 
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
+async function playGame() {
+    for (let i = 0; i < 5; i++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        const result = playRound(humanSelection, computerSelection);
+    
+        console.log(`Your choice: ${humanSelection}
+Computer choice: ${computerSelection}`);
+        console.log(result);
+    
+        await delay(2000);
+    }
 
+    if (humanScore > computerScore) {
+        console.log("Congratulations, you took the W!");
+    } else if (computerScore > humanScore) {
+        console.log("You're a big smelly loser");
+    } else {
+        console.log("It's a tie!");
+    }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-const result = playRound(humanSelection, computerSelection)
+    console.log(`Your score: ${humanScore}
+    Computer score: ${computerScore}`);
 
+}
 
-console.log(`Your choice: ${humanSelection}
-Computer choice: ${computerSelection}`)
-console.log(result)
-console.log(`Your score: ${humanScore}
-Computer score: ${computerScore}`)
+playGame();

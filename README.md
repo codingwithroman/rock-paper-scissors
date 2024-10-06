@@ -21,3 +21,4 @@ If "Rock" then wins from "Scissors"
 If "Scissors" then wins from "Paper"
 The score of the user or computer that provided the winning option gets incremented by +1 point
 5 rounds will be counted until the game ends and the side with the highest number of points gets declared as winner
+
